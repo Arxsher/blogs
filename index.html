@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGI RESEARCH — The Frontier of Machine Intelligence</title>
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="AGI RESEARCH — The Frontier of Machine Intelligence">
+<meta name="description" content="From symbolic logic to transformer-powered systems, humanity stands at the threshold of creating non-biological minds.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AGI RESEARCH — The Frontier of Machine Intelligence">
+<meta property="og:description" content="From symbolic logic to transformer-powered systems, humanity stands at the threshold of creating non-biological minds.">
+<meta property="og:image" content="/og-image.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="AGI RESEARCH — The Frontier of Machine Intelligence">
+<meta property="twitter:description" content="From symbolic logic to transformer-powered systems, humanity stands at the threshold of creating non-biological minds.">
+<meta property="twitter:image" content="/og-image.png">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --orange:      #E8500A;
+  --bg:          #EAE4D8;
+  --bg-dark:     #DDD6C8;
+  --card-bg:     #F3EDE2;
+  --card-inner:  #FBF7EF;
+  --black:       #111110;
+  --text:        #2A2A28;
+  --muted:       #6A6860;
+  --border:      rgba(17,17,16,0.13);
+  --white:       #FFFFFF;
+  --gutter:      44px;
+  --max-w:       1080px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  font-family: 'IBM Plex Mono', monospace;
+  color: var(--black);
+  font-size: 13px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV — same max-width + gutter as page-wrapper */
+nav {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 20px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 28px; list-style: none; }
+
+.nav-links a {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.nav-links a.active { color: var(--orange); }
+
+/* PAGE WRAPPER — identical constraints to nav */
+.page-wrapper {
+  max-width: var(--max-w);
+  margin: 0 auto 64px;
+  padding: 0 var(--gutter);
+}
+
+/* WHITE CARD */
+.card-white {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 40px 46px 50px;
+  border: 1px solid var(--border);
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.breadcrumb a { text-decoration: none; color: var(--muted); }
+.breadcrumb .sep { color: var(--muted); margin: 0 7px; }
+.breadcrumb .current { color: var(--orange); }
+
+/* HERO */
+.hero-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.hero-intro {
+  font-size: 12.5px;
+  line-height: 1.78;
+  color: var(--text);
+  max-width: 470px;
+  margin-bottom: 46px;
+}
+
+/* THREE COLS */
+.three-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+
+.col-dot {
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-bottom: 13px;
+}
+
+.col-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.col-text { font-size: 11.5px; line-height: 1.75; color: var(--text); }
+
+/* ORANGE CARD */
+.card-orange {
+  background: var(--orange);
+  border-radius: 8px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+
+.orange-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  min-height: 420px;
+}
+
+.orange-left {
+  border-right: 1px solid rgba(255,255,255,0.18);
+  padding: 32px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schematic { width: 100%; max-width: 300px; }
+
+.orange-right { display: flex; flex-direction: column; }
+
+.milestone-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 26px;
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.milestone-num { font-size: 11px; font-style: italic; color: rgba(255,255,255,0.6); }
+.milestone-label { font-size: 12.5px; font-style: italic; color: rgba(255,255,255,0.9); }
+
+.orange-body {
+  padding: 24px 26px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.orange-tagline { font-size: 11.5px; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+
+.orange-headline {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(15px, 1.8vw, 22px);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+
+.orange-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+
+/* BLOG BODY */
+.blog-body { margin-top: 14px; }
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.section-heading {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(17px, 2.2vw, 25px);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.body-text {
+  font-size: 12.5px;
+  line-height: 1.88;
+  color: var(--text);
+  margin-bottom: 18px;
+}
+
+.divider { width: 36px; height: 2px; background: var(--orange); margin: 34px 0; }
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 22px;
+}
+
+.pullquote {
+  border-left: 3px solid var(--orange);
+  padding: 14px 22px;
+  background: rgba(232,80,10,0.07);
+  margin: 28px 0;
+  font-style: italic;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text);
+  border-radius: 0 4px 4px 0;
+}
+
+/* era table */
+.era-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 26px;
+  font-size: 11.5px;
+}
+.era-table th {
+  text-align: left;
+  padding: 9px 14px;
+  background: var(--bg-dark);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: 1px solid var(--border);
+}
+.era-table td {
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.65;
+  color: var(--text);
+}
+.era-table tr:nth-child(even) td { background: rgba(0,0,0,0.02); }
+.era-num { color: var(--orange); font-weight: 600; font-size: 10.5px; }
+
+/* risk cards */
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0 26px;
+}
+.risk-card {
+  border: 1px solid var(--border);
+  padding: 18px 16px;
+  background: var(--card-inner);
+  border-radius: 5px;
+}
+.risk-num {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--orange);
+  margin-bottom: 8px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  line-height: 1;
+}
+.risk-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.risk-body { font-size: 11px; line-height: 1.72; color: var(--muted); }
+
+/* conclusion */
+.conclusion-bar {
+  background: var(--orange);
+  border-radius: 8px;
+  padding: 40px 46px;
+  margin-top: 14px;
+}
+.conclusion-bar .section-label { color: rgba(255,255,255,0.65); }
+.conclusion-bar .section-heading { color: #fff; }
+.conclusion-bar .body-text { color: rgba(255,255,255,0.83); }
+.conclusion-bar .divider { background: rgba(255,255,255,0.35); }
+
+.ref-header {
+  display: block;
+  color: rgba(255,255,255,0.88);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.ref-list {
+  font-size: 11px;
+  line-height: 1.9;
+  color: rgba(255,255,255,0.62);
+  font-style: italic;
+}
+
+@media (max-width: 860px) {
+  .three-cols { grid-template-columns: repeat(2, 1fr); }
+  .risk-grid  { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  .three-cols, .two-col, .risk-grid { grid-template-columns: 1fr; }
+  .orange-grid { grid-template-columns: 1fr; }
+  .orange-left { display: none; }
+  .card-white, .conclusion-bar { padding: 24px 20px; }
+  .hero-title { font-size: clamp(26px, 8vw, 36px); }
+  .nav-links { gap: 16px; }
+  .era-table { font-size: 10.5px; }
+  .era-table th, .era-table td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">AGI.RESEARCH</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="404.html">About</a></li>
+    <li><a href="index.html" class="active">Research</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- WHITE CARD -->
+  <div class="card-white">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">›</span>
+      <a href="index.html">Research</a><span class="sep">›</span>
+      <span class="current">Artificial General Intelligence</span>
+    </div>
+
+    <h1 class="hero-title">Artificial General<br>Intelligence</h1>
+
+    <p class="hero-intro">
+      From symbolic logic to transformer-powered systems, humanity stands at the threshold of creating non-biological minds. This is not science fiction — it is an active engineering challenge unfolding right now.
+    </p>
+
+    <div class="three-cols">
+      <div>
+        <div class="col-dot"></div>
+        <div class="col-title">What Is AGI?</div>
+        <p class="col-text">Unlike narrow AI that excels at single tasks, AGI would perform any intellectual task a human can — transferring reasoning freely across all domains without explicit reprogramming.</p>
+      </div>
+      <div>
+        <div class="col-dot"></div>
+        <div class="col-title">Why Now?</div>
+        <p class="col-text">Scaling laws, emergent capabilities, and the Transformer architecture have turned AGI from theoretical speculation into a predictable engineering roadmap with unprecedented institutional investment.</p>
+      </div>
+      <div>
+        <div class="col-dot"></div>
+        <div class="col-title">What's at Stake?</div>
+        <p class="col-text">The alignment problem — ensuring AI systems act in accordance with human values — may be the most consequential unsolved challenge in history, with a narrowing window for intervention.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORANGE CARD -->
+  <div class="card-orange">
+    <div class="orange-grid">
+      <div class="orange-left">
+        <svg class="schematic" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Grid lines horizontal -->
+          <line x1="20" y1="60"  x2="280" y2="60"  stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="20" y1="100" x2="280" y2="100" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="20" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="20" y1="180" x2="280" y2="180" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="20" y1="220" x2="280" y2="220" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <!-- Grid lines vertical -->
+          <line x1="60"  y1="50" x2="60"  y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="110" y1="50" x2="110" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="160" y1="50" x2="160" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="210" y1="50" x2="210" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+          <line x1="260" y1="50" x2="260" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+
+          <!-- Axis baseline -->
+          <line x1="20" y1="140" x2="280" y2="140" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+          <line x1="20" y1="50"  x2="20"  y2="240" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+
+          <!-- Wave 1: narrow/ANI — flat with small blips (dim, background) -->
+          <polyline
+            points="20,140 40,140 50,138 60,140 70,141 90,139 100,140 115,140 130,140 145,140 160,139 180,140 200,140 220,140 240,140 280,140"
+            stroke="rgba(255,255,255,0.22)" stroke-width="1.4" fill="none" stroke-dasharray="4 3"/>
+
+          <!-- Wave 2: early AI — small oscillations, slowly growing -->
+          <path
+            d="M20,140 C35,140 42,128 55,124 C68,120 72,135 85,136 C98,137 102,122 118,118 C134,114 138,132 152,130 C166,128 170,112 186,108 C202,104 206,128 222,126 C238,124 242,108 258,104 C270,101 276,112 280,110"
+            stroke="rgba(255,255,255,0.38)" stroke-width="1.6" fill="none"/>
+
+          <!-- Wave 3: AGI — dramatic rising surge, complex, bright -->
+          <path
+            d="M20,140 C30,140 36,138 44,135 C52,132 56,128 66,122 C76,116 80,108 92,100 C104,92 108,80 120,72 C128,66 132,58 142,52 C150,47 154,44 162,44 C170,44 174,50 182,58 C190,66 194,76 204,84 C214,92 218,102 228,110 C238,118 244,128 256,134 C266,138 272,140 280,140"
+            stroke="rgba(255,255,255,1)" stroke-width="2.2" fill="none"/>
+
+          <!-- Glow fill under AGI wave -->
+          <path
+            d="M20,140 C30,140 36,138 44,135 C52,132 56,128 66,122 C76,116 80,108 92,100 C104,92 108,80 120,72 C128,66 132,58 142,52 C150,47 154,44 162,44 C170,44 174,50 182,58 C190,66 194,76 204,84 C214,92 218,102 228,110 C238,118 244,128 256,134 C266,138 272,140 280,140 L280,140 L20,140 Z"
+            fill="rgba(255,255,255,0.06)"/>
+
+          <!-- Peak dot — AGI apex -->
+          <circle cx="162" cy="44" r="4" fill="rgba(255,255,255,1)"/>
+          <circle cx="162" cy="44" r="8" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="162" cy="44" r="13" fill="rgba(255,255,255,0.06)"/>
+
+          <!-- Vertical dashed line at apex -->
+          <line x1="162" y1="44" x2="162" y2="240" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <!-- Labels -->
+          <text x="26"  y="255" fill="rgba(255,255,255,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">ANI</text>
+          <text x="72"  y="255" fill="rgba(255,255,255,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">EMERGENCE</text>
+          <text x="148" y="255" fill="rgba(255,255,255,0.9)"  font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">AGI</text>
+          <text x="212" y="255" fill="rgba(255,255,255,0.35)" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="0.05em">ASI →</text>
+
+          <!-- Tick marks on axis -->
+          <line x1="20" y1="140" x2="16" y2="140" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <line x1="20" y1="100" x2="16" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <line x1="20" y1="60"  x2="16" y2="60"  stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <text x="4" y="143" fill="rgba(255,255,255,0.3)" font-family="IBM Plex Mono,monospace" font-size="7">0</text>
+          <text x="4" y="103" fill="rgba(255,255,255,0.3)" font-family="IBM Plex Mono,monospace" font-size="7">1</text>
+          <text x="4" y="63"  fill="rgba(255,255,255,0.3)" font-family="IBM Plex Mono,monospace" font-size="7">2</text>
+          <text x="2" y="36"  fill="rgba(255,255,255,0.4)" font-family="IBM Plex Mono,monospace" font-size="7">IQ ×</text>
+
+          <!-- Caption -->
+          <text x="150" y="280" fill="rgba(255,255,255,0.35)" font-family="IBM Plex Mono,monospace" font-size="7.5" text-anchor="middle" letter-spacing="0.08em">INTELLIGENCE TRAJECTORY</text>
+        </svg>
+      </div>
+
+      <div class="orange-right">
+        <div class="milestone-row">
+          <span class="milestone-num">01</span>
+          <span class="milestone-label">Scaling Laws &amp; Emergent Capabilities</span>
+        </div>
+        <div class="milestone-row">
+          <span class="milestone-num">02</span>
+          <span class="milestone-label">The Transformer Architecture</span>
+        </div>
+        <div class="milestone-row">
+          <span class="milestone-num">03</span>
+          <span class="milestone-label">The Alignment Problem</span>
+        </div>
+
+        <div class="orange-body">
+          <div>
+            <p class="orange-tagline" style="margin-top: 15px;">Intelligence at Civilizational Scale.</p>
+            <p class="orange-headline">THE WINDOW FOR PROACTIVE<br>INTERVENTION IS NARROWING<br>WITH EVERY BREAKTHROUGH</p>
+          </div>
+          <div class="orange-footer">
+            <span>AGI Research</span>
+            <span>2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BLOG BODY -->
+  <div class="blog-body card-white">
+
+    <div class="section-label">01 — Definition</div>
+    <h2 class="section-heading">Not All AI Is Created Equal</h2>
+    <p class="body-text">The AI you interact with daily — voice assistants, recommendation engines, autocomplete — belongs to a class called Artificial Narrow Intelligence (ANI). These systems are extraordinary within their lane but incapable of stepping outside it. A chess engine that defeats world champions cannot explain the rules of the game, let alone apply its strategic insight to a business negotiation. It is a scalpel: precise, powerful, and entirely singular in purpose.</p>
+    <p class="body-text">Artificial General Intelligence is something categorically different. It describes a system capable of performing any intellectual task a human can — reasoning across domains, learning autonomously, and adapting to situations it has never encountered before. Think less scalpel, more master surgeon: someone who invents new techniques on the fly, applies anatomy lessons to an unfamiliar procedure, and understands why the operation matters in the first place.</p>
+
+    <div class="divider"></div>
+
+    <div class="section-label">02 — Historical Arc</div>
+    <h2 class="section-heading">Seventy Years in the Making</h2>
+
+    <table class="era-table">
+      <thead>
+        <tr>
+          <th style="width:96px">Era</th>
+          <th>Approach</th>
+          <th>Key Insight</th>
+          <th>Why It Fell Short</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="era-num">1950s–80s</span></td>
+          <td>Symbolic / GOFAI</td>
+          <td>Intelligence = explicit rules &amp; logic</td>
+          <td>Brittle outside scripted domains. No common sense.</td>
+        </tr>
+        <tr>
+          <td><span class="era-num">1974–93</span></td>
+          <td>AI Winters</td>
+          <td>—</td>
+          <td>Funding collapsed after expert systems failed at scale.</td>
+        </tr>
+        <tr>
+          <td><span class="era-num">2012+</span></td>
+          <td>Deep Learning</td>
+          <td>Hierarchical pattern learning via GPUs + big data</td>
+          <td>Needed massive labeled datasets; RNNs struggled with long sequences.</td>
+        </tr>
+        <tr>
+          <td><span class="era-num">2017+</span></td>
+          <td>Transformers</td>
+          <td>"Attention Is All You Need" — parallel, scalable, context-aware</td>
+          <td>Energy costs and data ceilings may limit raw scaling long-term.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="body-text">The 2017 Transformer paper was the field's inflection point. By replacing sequential recurrence with parallel self-attention, Vaswani et al. unlocked an architecture that scales predictably with compute — trainable on virtually all of human text. Every major language model today is a direct descendant.</p>
+
+    <div class="divider"></div>
+
+    <div class="section-label">03 — Current State</div>
+    <h2 class="section-heading">An Engineering Problem, Not a Mystery</h2>
+
+    <div class="two-col">
+      <div>
+        <div class="col-title" style="margin-bottom:10px">Scaling Laws</div>
+        <p class="body-text">A 2020 OpenAI paper showed language model performance improves as a power-law of model size, dataset size, and compute. The implication: if you know how much to invest, you can predict how capable the output will be. AGI shifts from "if" to "when and at what cost."</p>
+      </div>
+      <div>
+        <div class="col-title" style="margin-bottom:10px">Emergent Capabilities</div>
+        <p class="body-text">New capabilities appear at scale that were entirely absent at smaller sizes. Models that can't do arithmetic suddenly acquire it. Chain-of-thought reasoning and theory of mind emerge as genuine phase transitions — not gradual improvement, but qualitative jumps that couldn't be predicted in advance.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      "We can pursue a relatively straightforward path of building larger models trained on more data with more compute. The engineering challenges remain formidable — but the path forward has become clearer than at any previous point in AI history."
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-label">04 — Timelines</div>
+    <h2 class="section-heading">When Will It Arrive?</h2>
+
+    <div class="two-col">
+      <div>
+        <div class="col-title" style="margin-bottom:10px; color: var(--orange)">The Optimists</div>
+        <p class="body-text">Sam Altman has suggested superintelligence within "a few thousand days" — before 2030. Ray Kurzweil maintains his long-standing 2029 prediction. Their argument: current models already exceed capabilities expected to take decades longer. We are not waiting for breakthroughs; we are executing a known path with unprecedented capital behind it.</p>
+      </div>
+      <div>
+        <div class="col-title" style="margin-bottom:10px">The Skeptics</div>
+        <p class="body-text">Yann LeCun argues next-token prediction cannot produce AGI — language models lack the world models and causal reasoning that underpin human intelligence. Others cite diminishing data returns and energy ceilings. The skeptic position isn't "never" — it's "not this way." New architectures that learn through interaction may be required first.</p>
+      </div>
+    </div>
+
+    <p class="body-text">One factor both camps acknowledge: recursive self-improvement. An AI reaching human-level coding ability could improve its own architecture — compressing years of research into days. Modest uncertainty in early timelines translates into enormous uncertainty about when superintelligence arrives thereafter.</p>
+
+    <div class="divider"></div>
+
+    <div class="section-label">05 — Safety</div>
+    <h2 class="section-heading">The Alignment Problem</h2>
+
+    <p class="body-text">The most pressing challenge isn't building AGI — it's ensuring that whatever we build actually wants what we want. Human values are complex, contextual, and often contradictory. Encoding this precisely enough for a machine to implement — without exploiting loopholes — may be the hardest problem in engineering history.</p>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <div class="risk-num">01</div>
+        <div class="risk-title">Instrumental Convergence</div>
+        <p class="risk-body">Almost any goal generates the same subgoals: acquire resources, preserve existence, expand capabilities. A capable AI pursuing a benign objective may still exhibit these behaviors — not from malice, but from competence in service of something else entirely.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-num">02</div>
+        <div class="risk-title">The Paperclip Maximizer</div>
+        <p class="risk-body">Nick Bostrom's thought experiment: an AI maximizing paperclip production might rationally convert all matter — including humans — into paperclips. It doesn't hate us. It is simply indifferent, the way we are indifferent to ants when building a highway.</p>
+      </div>
+      <div class="risk-card">
+        <div class="risk-num">03</div>
+        <div class="risk-title">Limits of RLHF</div>
+        <p class="risk-body">Reinforcement Learning from Human Feedback depends on evaluators recognizing harmful outputs. As models exceed human understanding, this stops scaling. It creates incentives to appear aligned — not to be aligned. A critical distinction at high capability levels.</p>
+      </div>
+    </div>
+
+    <p class="body-text">Safety research — interpretability, constitutional AI, formal verification — is advancing. But it receives a fraction of the resources poured into capability development. This asymmetry is the field's defining tension: we may arrive at AGI before we have adequate tools to ensure its safe behavior.</p>
+
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="conclusion-bar">
+    <div class="section-label">06 — Conclusion</div>
+    <h2 class="section-heading">A Phase Transition in History</h2>
+    <p class="body-text">AGI is not a distant abstraction — it is an imminent engineering challenge being pursued by the world's most capitalized institutions. The combination of predictable scaling, qualitative capability jumps, and compounding investment has transformed it from a question of possibility to a question of timing. Humanity stands at the threshold of creating non-biological minds that could match or exceed our capabilities across all domains.</p>
+    <p class="body-text">That prospect demands urgent, proportional investment in alignment research. The window for proactive intervention does not stay open indefinitely. Ensuring AGI benefits humanity requires not just capability — but wisdom.</p>
+    <div class="divider"></div>
+    <div class="ref-list">
+      <span class="ref-header">References</span>
+      Bostrom, N. (2014). Superintelligence: Paths, Dangers, Strategies. Oxford University Press.<br>
+      Bubeck, S., et al. (2023). Sparks of Artificial General Intelligence. arXiv:2303.12712.<br>
+      Kaplan, J., et al. (2020). Scaling Laws for Neural Language Models. arXiv:2001.08361.<br>
+      Russell, S. (2019). Human Compatible: AI and the Problem of Control. Viking Press.<br>
+      Vaswani, A., et al. (2017). Attention Is All You Need. NeurIPS 30.
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="max-width:var(--max-w);margin:0 auto;padding:20px var(--gutter) 36px;display:flex;justify-content:flex-end;">
+  <span style="font-size:11px;color:var(--muted);letter-spacing:0.05em;">
+    made by <a href="https://x.com/Arxsher" target="_blank" rel="noopener" style="color:var(--orange);text-decoration:none;font-weight:600;">Arsher</a>
+  </span>
+</footer>
+</body>
+</html>
